@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+	<application>
+		<message-bundle>msg.auth.login</message-bundle>
+	</application>
+
+	<managed-bean>
+		<description>Used for storing the user credentials</description>
+		<managed-bean-name>credentials</managed-bean-name>
+		<managed-bean-class>com.managedbeans.auth.Credentials</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>Used to Authenticate the User</description>
+		<managed-bean-name>authentication</managed-bean-name>
+		<managed-bean-class>com.managedbeans.auth.Authentication</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>credentials</property-name>
+			<property-class>com.managedbeans.auth.Credentials</property-class>
+			<value>#{credentials}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>userBean</managed-bean-name>
+		<managed-bean-class>com.managedbeans.masters.user.ManagedUserBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>genderList</property-name>
+			<property-class>java.util.List</property-class>
+			<list-entries>
+				<value-class>java.lang.String</value-class>
+				<value>M</value>
+				<value>F</value>
+			</list-entries>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>productionBean</managed-bean-name>
+		<managed-bean-class>com.managedbeans.masters.user.ManagedProductionBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>prodBean</managed-bean-name>
+		<managed-bean-class>com.managedbeans.masters.user.ProductionBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<display-name>factory/production/addProductionDetails.xhtml</display-name>
+		<from-view-id>/factory/production/addProductionDetails.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{prodBean.saveProduction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/factory/production/createProduction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>allProductionsDisplay</display-name>
+		<from-view-id>/factory/production/createProduction.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{prodBean.removeProduction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/factory/production/createProduction.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>login/login.xhtml</display-name>
+		<from-view-id>/login/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{authentication.authenticate}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/main/main.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/panel-head.xhtml</display-name>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-action>#{authentication.logout}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>

@@ -1,0 +1,111 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-color: #E5E6E7;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+
+#container {
+	clear: both;
+	direction: ltr;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	width: 100%;
+}
+
+#content-pane {
+	color: #000000;
+	direction: ltr;
+	float: left;
+	height: 100%;
+	padding: 0px;
+	width: 100%;
+}
+
+#panel-head {
+	background-color: #a1d5ef;
+	clear: both;
+	float: left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 20px;
+	text-align: right;
+	width: 100%;
+}
+
+#panel-body {
+	background-color: #FFFFFF;
+	clear: both;
+	float: left;
+	font-size: 12px;
+	height: 100%;
+	width: 100%;
+}
+
+#app-menu {
+	float: left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: auto;
+	width: 15%;
+}
+
+#body-content {
+	float: left;
+	height: 100%;
+	width: 85%;
+}
+
+#caption-area {
+	background-color: #CCCCCC;
+	clear: both;
+	color: #000000;
+	float: left;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+	width: 95%;
+}
+
+#view-area {
+	background-color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	float: left;
+	width: 100%;
+}
+
+#inputForm {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	float: left;
+	margin-top: 5px;
+	padding: 5px;
+	min-width: 0;
+	width: 95%;
+}
+
+input {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	width: 200px;
+	height: 20px;
+	border-width: thin;
+	border-style: solid;
+	border-color: #666666;
+}
+
+input:focus {
+	border-color: #6666FF;
+}
+
+label {
+	position: relative;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-top: 5px;
+}

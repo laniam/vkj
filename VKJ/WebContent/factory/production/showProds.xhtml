@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="title">VK Jewels | Productions</ui:insert></title>
+</h:head>
+
+<ui:composition template="/templates/view.xhtml">
+	<ui:define name="view-area">
+		<div id="EditForm"
+			style="clear: both; float: left; margin-top: 10px; padding: 5px; width: 95%">
+			<h:form id="showDetails" >
+			To add production please click on this button			
+				<h:button id="lnkHidden" value=" Add Production " style="font-size:13px"
+					outcome="addProductionDetails.jsf" >
+				</h:button>
+			</h:form>
+			<br/>
+			<br/>
+			<h:form id="frmProdEdit">
+				<p:panel id="pnlProdDisplay">
+					<f:facet name="header">
+						<h:outputText value="Production List" />
+					</f:facet>
+					<p:messages id="msgEditUser" showSummary="true" autoUpdate="true"
+						closable="true" for="editUser" />
+
+					<p:dataTable id="tblProdDetails" var="prod"
+						value="#{prodBean.prodList}" editable="true"
+						resizableColumns="true" paginator="true" rows="10">
+
+						<p:ajax event="rowEdit" listener="#{userBean.onUpdate}"
+							update=":frmProdEdit:msgEditUser :frmProdEdit:tblProdDetails" />
+
+						<p:column headerText="Prod ID" sortBy="#{prod.prodID}"
+							style="width: 15%">
+		z					<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{prod.prodID}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{prod.prodID}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Production Name" sortBy="#{prod.prodName}"
+							style="width: 15%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{prod.prodName}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{prod.prodName}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Enroll Date" sortBy="#{prod.prodDate}"
+							style="width: 25%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{prod.prodDetalsStr}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{prod.prodDetalsStr}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Prod Type" sortBy="#{prod.prodType}"
+							style="width: 15%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{prod.prodType}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{prod.prodType}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Edit" style="width: 5%">
+							<p:rowEditor rendered="true">
+							</p:rowEditor>
+						</p:column>
+
+						<p:column headerText="Remove" style="width: 10%">
+							<p:commandButton icon="ui-icon-trash"
+								action="#{prodBean.removeProduction}" update=":frmProdEdit">
+								<f:setPropertyActionListener target="#{prodBean.selectedBean}"
+									value="#{prod}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="title">VK Jewels | Enroll Production</ui:insert></title>
+</h:head>
+
+<ui:composition template="/templates/view.xhtml">
+	<ui:define name="view-area">
+		<div id="inputForm" style="clear: both; float: left">
+			<p:tabView id="factoryProductionEditForm">
+				<p:tab id="factory" title="Factory">
+					<!-- <p:growl id="growl" showDetail="true" sticky="true" /> -->
+					<p:messages id="msgSavefactoryProdution" showSummary="true"
+						autoUpdate="true" closable="true" />
+
+					<h:form id="formFactoryProductionForm">
+						<h:panelGrid columns="4" cellpadding="4">
+							<p:outputLabel value="Produtcion Name:" for="produtionName" />
+							<p:outputLabel
+								value="#{prodBean.selectedBean.factoryProduction.productionName}"
+								id="produtionName" />
+						</h:panelGrid>
+						<p:tabView id="factoryStagesForm">
+							<p:outputLabel value="Metal 1:" />
+							<p:tab id="factoryCasting" title="Casting">
+								<p:outputLabel value="Order Placed:" style="font-size:20px" />
+								<br />
+								<h:panelGrid columns="3" cellpadding="2">
+									<p:outputLabel value="Worker Name:" />
+									<p:outputLabel id="castingWorkerName"
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.workerName}" />
+									<h:message></h:message>
+
+									<p:outputLabel for="castingMetal12" value="Metal 1:" />
+									<p:outputLabel id="castingMetal12"
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.firstMetal}" />
+									<h:message></h:message>
+									<p:outputLabel for="castingMetal1Weight"
+										value="Metal 1 Weight:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.firstMetalWeight}"
+										id="castingMetal1Weight" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.firstMetalWeightUnit}"
+										id="_castingMetal1" />
+									<p:outputLabel for="castingMetalPurity" value="Metal 1 Purity:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.firstMetalPurity}"
+										id="castingMetalPurity" />
+									<h:message></h:message>
+
+									<p:outputLabel for="castingMetal2" value="Metal 2:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.alloy}"
+										id="castingMetal2" />
+									<h:message></h:message>
+
+									<p:outputLabel for="castingMetal2Weight"
+										value="Metal 2 Weight:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.alloyMetalWeight}"
+										id="castingMetal2Weight" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.alloyMetalWeightUnit}"
+										id="castingMetal2Weight1" />
+
+								</h:panelGrid>
+								<br />
+								<br />
+								<p:outputLabel value="Order Received:" style="font-size:20px" />
+								<h:panelGrid columns="3" cellpadding="2">
+									<p:outputLabel  value="Worker Name:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.casting.orderReceived.workerName}"
+										id="_castingWorkerName" effectSpeed="0">
+									</p:outputLabel>
+									<h:message></h:message>
+									<p:outputLabel for="_castingMetal12" value="Metal 1:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.casting.orderReceived.firstMetal}"
+										id="_castingMetal12" effectSpeed="0">
+									</p:outputLabel>
+									<h:message></h:message>
+
+									<p:outputLabel for="_castingMetal1Weight"
+										value="Metal 1 Weight:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.casting.orderReceived.firstMetalWeight}"
+										id="_castingMetal1Weight"
+										requiredMessage="First Name cannot be blank" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.casting.orderReceived.firstMetalWeightUnit}"
+										id="castingMetal1" effectSpeed="0">
+									</p:outputLabel>
+									<p:outputLabel for="_castingMetalPurity"
+										value="Metal 1 Purity:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.casting.orderReceived.firstMetalPurity}"
+										id="_castingMetalPurity"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+
+									<p:outputLabel for="_castingMetal2" value="% Gold Loss" />
+
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.casting.orderReceived.loss}"
+										id="_castingMetal2" />
+									<h:message></h:message>
+
+
+								</h:panelGrid>
+							</p:tab>
+							<p:tab id="factoryMagnetPloish" title="MagnetPloish">
+								<p:outputLabel value="Order Placed:" style="font-size:20px" />
+								<br />
+
+								<h:panelGrid columns="3" cellpadding="2">
+									<p:outputLabel for="magnetPolishWorkerName"
+										value="Worker Name:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.workerName}"
+										id="magnetPolishWorkerName" />
+									<h:message></h:message>
+									<p:outputLabel for="magnetPolishMetal12" value="Metal 1:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.firstMetal}"
+										id="magnetPolishMetal12" />
+									<h:message></h:message>
+
+									<p:outputLabel for="magnetPolishMetal1Weight"
+										value="Mould available:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.mouldAvailable}"
+										id="magnetPolishMetal1Weight" />
+									<h:message></h:message>
+
+									<p:outputLabel for="magnetPolishMetalPurity"
+										value="Gold weight:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.goldWeight}"
+										id="magnetPolishMetalPurity" />
+									<h:message></h:message>
+
+									<p:outputLabel for="magnetPolishMetal2" value="No. of Pieces" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.piecesCount}"
+										id="magnetPolishMetal2" />
+									<h:message></h:message>
+
+									<p:outputLabel for="magnetPolishMetal2Weight" value="Remarks:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.remarks}"
+										id="magnetPolishMetal2Weight" />
+									<h:message></h:message>
+								</h:panelGrid>
+								<br />
+								<br />
+								<p:outputLabel value="Order Received:" style="font-size:20px" />
+								<h:panelGrid columns="3" cellpadding="2">
+									<p:outputLabel for="_magnetPolishWorkerName"
+										value="Worker Name:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.magnetPolish.orderReceived.workerName}"
+										id="_magnetPolishWorkerName" effectSpeed="0">
+
+									</p:outputLabel>
+									<h:message></h:message>
+									<p:outputLabel for="_magnetPolishMetal12" value="Metal 1:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.magnetPolish.orderReceived.firstMetal}"
+										id="_magnetPolishMetal12" effectSpeed="0">
+
+									</p:outputLabel>
+									<h:message></h:message>
+
+									<p:outputLabel for="_magnetPolishMetal2Weight" value="Remarks:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.magnetPolish.orderReceived.remarks}"
+										id="_magnetPolishMetal2Weight"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+									<p:outputLabel for="_loss" value="% Gold Loss" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.magnetPolish.orderReceived.loss}"
+										id="_loss" requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+
+								</h:panelGrid>
+
+							</p:tab>
+							<p:tab id="factoryGhatPloish" title="GhatPloish">
+								<p:outputLabel value="Order Placed:" style="font-size:20px" />
+								<br />
+								<h:panelGrid columns="3" cellpadding="2">
+									<p:outputLabel for="ghatPloishWorkerName" value="Worker Name:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.workerName}"
+										id="ghatPloishWorkerName" />
+									<h:message></h:message>
+									<p:outputLabel for="ghatPloishMetal12" value="Metal 1:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.firstMetal}"
+										id="ghatPloishMetal12" />
+									<h:message></h:message>
+									<p:outputLabel for="ghatPloishMetal1Weight"
+										value="Mould available:" />
+									<p:outputLabel id="ghatPloishMetal1Weight"
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.mouldAvailable}" />
+									<h:message></h:message>
+									<p:outputLabel for="ghatPloishMetalPurity" value="Gold weight:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.goldWeight}"
+										id="ghatPloishMetalPurity" />
+									<h:message></h:message>
+
+									<p:outputLabel for="ghatPloishMetal2" value="No. of Pieces" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.piecesCount}"
+										id="ghatPloishMetal2" />
+									<h:message></h:message>
+
+									<p:outputLabel for="ghatPloishMetal2Weight" value="Remarks:" />
+									<p:outputLabel
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.remarks}"
+										id="ghatPloishMetal2Weight" />
+									<h:message></h:message>
+								</h:panelGrid>
+								<br />
+								<br />
+								<p:outputLabel value="Order Received:" style="font-size:20px" />
+								<h:panelGrid columns="3" cellpadding="2">
+									<p:outputLabel for="_ghatPloishWorkerName" value="Worker Name:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.ghatPloish.orderReceived.workerName}"
+										id="_ghatPloishWorkerName" effectSpeed="0">
+									</p:outputLabel>
+									<h:message></h:message>
+									<p:outputLabel for="_ghatPloishMetal12" value="Metal 1:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.ghatPloish.orderReceived.firstMetal}"
+										id="_ghatPloishMetal12" effectSpeed="0">
+									</p:outputLabel>
+									<h:message></h:message>
+
+
+									<p:outputLabel for="_ghatPloishMetal2Weighqt"
+										value="Recieved Quantity" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.ghatPloish.orderReceived.receivedQuantity}"
+										id="_ghatPloishMetal2Weighqt"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+
+
+									<p:outputLabel for="_ghatPloishMetal2Weight" value="Remarks:" />
+									<p:outputLabel
+										value="#{prodBean.factoryProduction.ghatPloish.orderReceived.remarks}"
+										id="_ghatPloishMetal2Weight"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+									<p:outputLabel for="_ghatPloishMetal1Weight"
+										value="% GOld Loss" />
+									<p:outputLabel id="_ghatPloishMetal1Weight"
+										value="#{prodBean.factoryProduction.magnetPolish.orderReceived.loss}" />
+									<h:message></h:message>
+								</h:panelGrid>
+							</p:tab>
+						</p:tabView>
+					</h:form>
+				</p:tab>
+			</p:tabView>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

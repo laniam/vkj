@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/base-template.xhtml">
+	<ui:define name="content-pane">
+		<div id="login-area"><h:form id="frmLogin">
+			<p:panel id="login-panel">
+				<p:focus id="focus" context="login-panel" />
+				<p:messages id="messages" showSummary="true" autoUpdate="true"
+					closable="true" />
+				<f:facet name="header">
+					<h:outputText value="Member Login" />
+				</f:facet>
+				<h:panelGrid columns="1" cellpadding="2"
+					style="margin: 0px; border: none;">
+
+					<p:outputLabel for="username" value="User Name:" />
+					<p:inputText value="#{credentials.userName}" id="username" />
+
+					<p:outputLabel for="password" value="Password:" />
+					<p:password value="#{credentials.password}" id="password" />
+
+					<f:facet name="footer" style="padding: 5px; margin-top: 5px;">
+						<p:commandButton type="submit" value="Login"
+							action="#{authentication.authenticate}"
+							style="font-size: 12px; font-weight: bold; width: 100px; height: 30px"
+							update="messages focus" process="@form">
+							<f:param name="credentials" value="#{credentials}" />
+						</p:commandButton>
+					</f:facet>
+				</h:panelGrid>
+			</p:panel>
+		</h:form></div>
+	</ui:define>
+</ui:composition>
+</html>

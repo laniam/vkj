@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJarLocking="true" antResourceLocking="true">
+	<Resource name="jdbc/mysql" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/vkjewels"
+		username="root" password="admin" maxActive="2" maxIdle="1" maxWait="-1" />
+</Context>

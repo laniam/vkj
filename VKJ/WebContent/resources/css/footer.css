@@ -1,0 +1,11 @@
+#footer {
+	background-color: #CCCCCC;
+	clear: both;
+	direction: ltr;
+	float: left;
+	font: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 30px;
+	text-align: center;
+	width: 100%; 
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="title">VK Jewels | User Creation</ui:insert></title>
+</h:head>
+
+<ui:composition template="/templates/view.xhtml">
+	<ui:define name="view-area">
+		<div id="inputForm" style="clear: both; float: left">
+			<h:form id="frmUserCreation">
+				<p:panel id="pnlUserCreation">
+					<!-- <p:growl id="growl" showDetail="true" sticky="true" /> -->
+					<p:messages id="msgSaveUser" showSummary="true" autoUpdate="true"
+						closable="true" />
+					<f:facet name="header">
+						<h:outputText value="User Creation" />
+					</f:facet>
+					<h:panelGrid columns="2" cellpadding="2">
+						<p:outputLabel for="role" value="Role:" />
+						<p:selectOneMenu value="#{userBean.selectedRole}" id="role" effectSpeed="0">
+							<f:selectItems value="#{userBean.roleList}" var="role"
+								itemValue="#{role.roleId}" itemLabel="#{role.roleName}" />
+						</p:selectOneMenu>
+						
+						<p:outputLabel for="firstName" value="First Name:" />
+						<p:inputText value="#{userBean.firstName}" id="firstName"
+							required="true" requiredMessage="First Name cannot be blank" />
+						<p:outputLabel for="lastName" value="Last Name:" />
+						<p:inputText value="#{userBean.lastName}" id="lastName"
+							required="true" requiredMessage="Last Name cannot be blank" />
+						<p:outputLabel for="gender" value="Gender:" />
+						<p:selectOneRadio id="gender" value="#{userBean.selectedGender}">
+							<f:selectItems value="#{userBean.genderList}" />
+						</p:selectOneRadio>
+						<p:outputLabel for="email" value="Email:" />
+						<p:inputText value="#{userBean.emailId}" id="email" required="true"
+							requiredMessage="Email cannot be blank" />
+						<p:outputLabel for="mobile" value="Mobile:" />
+						<p:inputText value="#{userBean.mobile}" id="mobile" required="true"
+							requiredMessage="Mobile cannot be blank" />
+						<f:facet name="footer" style="padding: 5px; margin-top: 10px;">
+							<p:commandButton type="submit" value="Save" ajax="true"
+								action="#{userBean.saveUser}"
+								style="font-size: 12px; 
+										font-weight: bold; width: 150px; height: 30px; float: left;" 
+								process="frmUserCreation" />
+							<p:commandButton type="reset" value="Reset"
+								style="font-size: 12px; 
+										font-weight: bold; width: 150px; height: 30px; float: left;" 
+								update="@frmUserCreation" />
+						</f:facet>
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</div>
+		<br />
+		<br />
+		<br />
+		<div id="EditForm" style="clear: both; float: left; margin-top: 10px; padding: 5px; width: 95%">
+			<h:form id="frmUserEdit">
+				<p:panel id="pnlEditUser">	
+					<f:facet name="header">
+						<h:outputText value="Users List"/>
+					</f:facet>
+					
+					<p:messages id="msgEditUser" showSummary="true" autoUpdate="true"
+						closable="true" for="editUser" />
+
+					<p:dataTable id="tblUserDetails" var="user" value="#{userBean.userList}" editable="true" 
+						resizableColumns="true" paginator="true" rows="10">
+						
+						<p:ajax event="rowEdit" listener="#{userBean.onUpdate}" 
+							update=":frmUserEdit:msgEditUser :frmUserEdit:tblUserDetails" />
+							
+						<p:column headerText="First Name" sortBy="#{user.person.firstName}" style="width: 15%">
+		z					<p:cellEditor>
+	                			<f:facet name="output">
+	                    			<h:outputText value="#{user.person.firstName}" />
+	                			</f:facet>
+	                			<f:facet name="input">
+	                    			<p:inputText value="#{user.person.firstName}" style="width:100%"/>
+	                			</f:facet>
+	            			</p:cellEditor> 
+						</p:column>
+						
+						<p:column headerText="Last Name" sortBy="#{user.person.lastName}" style="width: 15%">
+							<p:cellEditor>  
+	                			<f:facet name="output">
+	                    			<h:outputText value="#{user.person.lastName}" />
+	                			</f:facet>
+	                			<f:facet name="input">
+	                    			<p:inputText value="#{user.person.lastName}" style="width:100%"/>
+	                			</f:facet>
+	            			</p:cellEditor> 
+						</p:column>
+						
+						<p:column headerText="Email" sortBy="#{user.person.emailId}" style="width: 25%">
+							<p:cellEditor>  
+	                			<f:facet name="output">
+	                    			<h:outputText value="#{user.person.emailId}" />
+	                			</f:facet>
+	                			<f:facet name="input">
+	                    			<p:inputText value="#{user.person.emailId}" style="width:100%"/>
+	                			</f:facet>
+	            			</p:cellEditor> 
+						</p:column>
+						
+						<p:column headerText="Mobile" sortBy="#{user.person.mobileNo}" style="width: 15%">
+							<p:cellEditor>  
+	                			<f:facet name="output">
+	                    			<h:outputText value="#{user.person.mobileNo}" />
+	                			</f:facet>
+	                			<f:facet name="input">
+	                    			<p:inputText value="#{user.person.mobileNo}" style="width:100%"/>
+	                			</f:facet>
+	            			</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Role" sortBy="#{user.role.roleName}" style="width: 15%">
+							<p:cellEditor>  
+	                			<f:facet name="output">
+	                    			<h:outputText value="#{user.role.roleName}" />
+	                			</f:facet>
+	                			<f:facet name="input">
+	                    			<p:selectOneMenu value="#{user.role.roleId}" id="drpRole" effectSpeed="0" style="width: 75%">
+										<f:selectItems value="#{userBean.roleList}" var="role"
+											itemValue="#{role.roleId}" itemLabel="#{role.roleName}" />
+									</p:selectOneMenu>
+	                			</f:facet>
+	            			</p:cellEditor>
+						</p:column>
+					
+						<p:column headerText="Edit" style="width: 5%">
+							<p:rowEditor rendered="#{(user.person.personId != userBean.loggedInUser.person.personId) ? true : false}" />
+						</p:column>
+						
+						<p:column headerText="Remove" style="width: 10%">
+							<p:commandButton icon="ui-icon-trash" 
+								rendered="#{(user.person.personId != userBean.loggedInUser.person.personId) ? true : false}" 
+								action="#{userBean.removeUser}" update=":frmUserEdit">
+								<f:setPropertyActionListener target="#{userBean.selectedUser}" value="#{user}" />
+							</p:commandButton>
+						</p:column>
+						
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+</html>

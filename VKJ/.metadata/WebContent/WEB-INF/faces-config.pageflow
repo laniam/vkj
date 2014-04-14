@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13781438876250" configfile="/VKJ/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login/login.xhtml" x="216" y="31" id="pf13858351214842" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf13858351214843" inlinks="pf13859755310622" path="/login/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="main/main.xhtml" x="348" y="12" id="pf13858351214844" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf13858351214843" path="/main/main.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/panel-head.xhtml" x="-12" y="12" id="pf13859755310623" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf13859755310622" path="/*"/>
+  <nodes xsi:type="pageflow:PFPage" name="factory/production/addProductionDetails.xhtml" x="516" y="62" id="pf13964873759958" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13964873759959" path="/factory/production/addProductionDetails.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="allProductionsDisplay" x="456" y="252" id="pf139648737599510" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" outlinks="pf13965437057151" inlinks="pf13964873759959 pf13965437057151" path="/factory/production/createProduction.xhtml"/>
+  <links id="pf13858351214843" target="pf13858351214844" source="pf13858351214842" outcome="success" redirect="true" fromaction="#{authentication.authenticate}"/>
+  <links id="pf13859755310622" target="pf13858351214842" source="pf13859755310623" outcome="success" redirect="true" fromaction="#{authentication.logout}"/>
+  <links id="pf13964873759959" target="pf139648737599510" source="pf13964873759958" outcome="success" redirect="true" fromaction="#{prodBean.saveProduction}"/>
+  <links id="pf13965437057151" target="pf139648737599510" source="pf139648737599510" outcome="success" redirect="true" fromaction="#{prodBean.removeProduction}">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>

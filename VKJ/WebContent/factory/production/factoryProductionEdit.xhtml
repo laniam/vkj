@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="title">VK Jewels | Enroll Production</ui:insert></title>
+</h:head>
+
+<ui:composition template="/templates/view.xhtml">
+	<ui:define name="view-area">
+		<div id="inputForm" style="clear: both; float: left">
+			<p:tabView id="factoryProductionEditForm">
+				<p:tab id="factory" title="Factory">
+					<!-- <p:growl id="growl" showDetail="true" sticky="true" /> -->
+					<p:messages id="msgSavefactoryProdution" showSummary="true" autoUpdate="true"
+						closable="true" />
+
+					<h:form id="formFactoryProductionForm">
+						<h:panelGrid columns="4" cellpadding="4">
+							<p:outputLabel value="Produtcion Name:" for="produtionName" />
+							<p:inputText value="#{prodBean.selectedBean.factoryProduction.productionName}"
+								id="produtionName" required="true"
+								requiredMessage="Production name is required" />
+						</h:panelGrid>
+						<p:tabView id="factoryStagesForm">
+							<p:outputLabel value="Metal 1:" />
+							<p:tab id="factoryCasting" title="Casting">
+								<p:outputLabel value="Order Placed:" style="font-size:20px" />
+								<br />
+								<h:panelGrid columns="3" cellpadding="2">
+									<p:outputLabel for="castingWorkerName" value="Worker Name:" />
+									<p:selectOneMenu
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.workerName}"
+										id="castingWorkerName" effectSpeed="0">
+										<f:selectItems value="#{prodBean.workersNames}"
+											var="workerName_" itemValue="#{workerName_}"
+											itemLabel="#{workerName_}" />
+									</p:selectOneMenu>
+									<h:message></h:message>
+									<p:outputLabel for="castingMetal12" value="Metal 1:" />
+									<p:selectOneMenu
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.firstMetal}"
+										id="castingMetal12" effectSpeed="0">
+										<f:selectItems value="#{prodBean.metal1Type}" var="metal1"
+											itemValue="#{metal1}" itemLabel="#{metal1}" />
+									</p:selectOneMenu>
+									<h:message></h:message>
+
+									<p:outputLabel for="castingMetal1Weight"
+										value="Metal 1 Weight:" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.firstMetalWeight}"
+										id="castingMetal1Weight"
+										requiredMessage="First Name cannot be blank" />
+									<p:selectOneMenu
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.firstMetalWeightUnit}"
+										id="castingMetal1" effectSpeed="0">
+										<f:selectItems value="#{prodBean.unitsList}" var="metalUnits"
+											itemValue="#{metalUnits}" itemLabel="#{metalUnits}" />
+									</p:selectOneMenu>
+									<p:outputLabel for="castingMetalPurity" value="Metal 1 Purity:" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.firstMetalPurity}"
+										id="castingMetalPurity"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+
+									<p:outputLabel for="castingMetal2" value="Metal 2:" />
+									<p:selectOneMenu
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.alloy}"
+										id="castingMetal2" effectSpeed="0">
+										<f:selectItems value="#{prodBean.metal1Type}" var="alloyVal"
+											itemValue="#{alloyVal}" itemLabel="#{alloyVal}" />
+									</p:selectOneMenu>
+									<h:message></h:message>
+
+									<p:outputLabel for="castingMetal2Weight"
+										value="Metal 2 Weight:" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.alloyMetalWeight}"
+										id="castingMetal2Weight"
+										requiredMessage="First Name cannot be blank" />
+									<p:selectOneMenu
+										value="#{prodBean.selectedBean.factoryProduction.casting.orderPlaced.alloyMetalWeightUnit}"
+										id="castingMetal2Weight1" effectSpeed="0">
+										<f:selectItems value="#{prodBean.unitsList}" var="metal2Units"
+											itemValue="#{metal2Units}" itemLabel="#{metal2Units}" />
+									</p:selectOneMenu>
+
+								</h:panelGrid>
+								<br />
+								<br />
+								<p:outputLabel value="Order Received:" style="font-size:20px" />
+								<h:panelGrid columns="3" cellpadding="2">
+								</h:panelGrid>
+							</p:tab>
+							<p:tab id="factoryMagnetPloish" title="MagnetPloish">
+								<h:panelGrid columns="3" cellpadding="2">
+									<p:outputLabel for="magnetPolishWorkerName"
+										value="Worker Name:" />
+									<p:selectOneMenu
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.workerName}"
+										id="magnetPolishWorkerName" effectSpeed="0">
+										<f:selectItems value="#{prodBean.workersNames}"
+											var="workerName_" itemValue="#{workerName_}"
+											itemLabel="#{workerName_}" />
+									</p:selectOneMenu>
+									<h:message></h:message>
+									<p:outputLabel for="magnetPolishMetal12" value="Metal 1:" />
+									<p:selectOneMenu
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.firstMetal}"
+										id="magnetPolishMetal12" effectSpeed="0">
+										<f:selectItems value="#{prodBean.metal1Type}" var="metal1"
+											itemValue="#{metal1}" itemLabel="#{metal1}" />
+									</p:selectOneMenu>
+									<h:message></h:message>
+
+									<p:outputLabel for="magnetPolishMetal1Weight"
+										value="Mould available:" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.mouldAvailable}"
+										id="magnetPolishMetal1Weight"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+
+									<p:outputLabel for="magnetPolishMetalPurity"
+										value="Gold weight:" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.goldWeight}"
+										id="magnetPolishMetalPurity"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+
+									<p:outputLabel for="magnetPolishMetal2" value="No. of Pieces" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.piecesCount}"
+										id="magnetPolishMetal2"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+
+									<p:outputLabel for="magnetPolishMetal2Weight" value="Remarks:" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.remarks}"
+										id="magnetPolishMetal2Weight"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+								</h:panelGrid>
+								<br />
+								<br />
+								<p:outputLabel value="Order Received:" style="font-size:20px" />
+								<h:panelGrid columns="3" cellpadding="2">
+								</h:panelGrid>
+
+							</p:tab>
+							<p:tab id="factoryGhatPloish" title="GhatPloish">
+								<h:panelGrid columns="3" cellpadding="2">
+									<p:outputLabel for="ghatPloishWorkerName" value="Worker Name:" />
+									<p:selectOneMenu
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.workerName}"
+										id="ghatPloishWorkerName" effectSpeed="0">
+										<f:selectItems value="#{prodBean.workersNames}"
+											var="workerName_" itemValue="#{workerName_}"
+											itemLabel="#{workerName_}" />
+									</p:selectOneMenu>
+									<h:message></h:message>
+									<p:outputLabel for="ghatPloishMetal12" value="Metal 1:" />
+									<p:selectOneMenu
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.firstMetal}"
+										id="ghatPloishMetal12" effectSpeed="0">
+										<f:selectItems value="#{prodBean.metal1Type}" var="metal1"
+											itemValue="#{metal1}" itemLabel="#{metal1}" />
+									</p:selectOneMenu>
+									<h:message></h:message>
+									<p:outputLabel for="ghatPloishMetal1Weight"
+										value="Mould available:" />
+									<p:outputLabel id="ghatPloishMetal1Weight"
+										value="#{prodBean.selectedBean.factoryProduction.magnetPolish.orderPlaced.mouldAvailable}" />
+									<h:message></h:message>
+									<p:outputLabel for="ghatPloishMetalPurity" value="Gold weight:" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.goldWeight}"
+										id="ghatPloishMetalPurity"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+
+									<p:outputLabel for="ghatPloishMetal2" value="No. of Pieces" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.piecesCount}"
+										id="ghatPloishMetal2"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+
+									<p:outputLabel for="ghatPloishMetal2Weight" value="Remarks:" />
+									<p:inputText
+										value="#{prodBean.selectedBean.factoryProduction.ghatPloish.orderPlaced.remarks}"
+										id="ghatPloishMetal2Weight"
+										requiredMessage="First Name cannot be blank" />
+									<h:message></h:message>
+								</h:panelGrid>
+								<br />
+								<br />
+								<p:outputLabel value="Order Received:" style="font-size:20px" />
+								<h:panelGrid columns="3" cellpadding="2">
+								</h:panelGrid>
+							</p:tab>
+						</p:tabView>
+						<h:panelGrid columns="2" cellpadding="2">
+							<f:facet name="footer" style="padding: 5px; margin-top: 10px;">
+								<p:commandButton type="submit" value="Save" ajax="true"
+									action="#{prodBean.saveProduction}"
+									style="font-size: 12px; 
+										font-weight: bold; width: 150px; height: 30px; float: left;"
+									process="formFactoryProductionForm" />
+								<p:commandButton type="reset" value="Reset"
+									style="font-size: 12px; 
+										font-weight: bold; width: 150px; height: 30px; float: left;"
+									update="@formFactoryProductionForm" />
+							</f:facet>
+
+						</h:panelGrid>
+
+					</h:form>
+				</p:tab>
+			</p:tabView>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
